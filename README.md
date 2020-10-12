@@ -7,8 +7,8 @@ The program will reset the watchdog five times, then never again. After three se
 comes into play and it will reboot the esp32.
 
 ### Environment
-  hardware: Espressif ESP32 Dev Module
-  IDE:      Platformio
+- hardware: Espressif ESP32 Dev Module
+- IDE:      Platformio
   
 ### Installation
 - clone the repository directly into vscode (recommended)
