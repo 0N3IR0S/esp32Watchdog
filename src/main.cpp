@@ -12,8 +12,8 @@ Date:     12.10.2020
 
 // GLOBAL
 #define WDT_TIMEOUT 3 // time after cpu will reset
-int i = 0;
-int last = millis();
+int i = 0;            // number of cycles
+int last = millis();  // timer
 
 // SETUP
 void setup()
@@ -33,13 +33,13 @@ void loop()
   // resetting WDT every 2s, 5 times only
   if (millis() - last >= 2000 && i < 5)
   {
-    Serial.println("Resetting WDT...");
+    Serial.println(F("Resetting WDT..."));
     esp_task_wdt_reset();
     last = millis();
     i++;
     if (i == 5)
     {
-      Serial.println("Stopping WDT reset. CPU should reboot in 3s");
+      Serial.println(F("Stopping WDT reset. CPU should reboot in 3s"));
     }
   }
 }
