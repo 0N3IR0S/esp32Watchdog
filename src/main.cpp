@@ -1,6 +1,7 @@
 #include <Arduino.h>
 /*
 Description:  This is a simple example for the built-in watchdog.
+License:      This project is licensed under the terms of the MIT license.
 Github:       https://github.com/0N3IR0S/esp32Watchdog
 
 Author:   Benjamin Buerge
@@ -11,9 +12,9 @@ Created:  13.10.2020
 #include <esp_task_wdt.h>
 
 // GLOBAL
-#define WDT_TIMEOUT 3 // time after cpu will reset
-int i = 0;            // number of cycles
-int last = millis();  // timer
+#define WDT_TIMEOUT 3      // time after cpu will reset
+int i = 0;                 // number of cycles
+int lastMillis = millis(); // timer
 
 // SETUP
 void setup()
@@ -30,16 +31,21 @@ void setup()
 // MAIN LOOP
 void loop()
 {
-  // resetting WDT every 2s, 5 times only
-  if (millis() - last >= 2000 && i < 5)
+  // reset WDT every 2s for 6 cycles
+  if (millis() - lastMillis >= 2000 && i < 5)
   {
-    Serial.println(F("Resetting WDT..."));
+    // reset WDT
     esp_task_wdt_reset();
-    last = millis();
+    Serial.println(F("WDT reset..."));
+
+    // increment counter and reset timer
     i++;
+    lastMillis = millis();
+
+    // info last reset
     if (i == 5)
     {
-      Serial.println(F("Stopping WDT reset. CPU should reboot in 3s"));
+      Serial.println(F("Last WDT reset happend, ESP32 should reboot in 3s!"));
     }
   }
 }
