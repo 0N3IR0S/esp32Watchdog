@@ -1,10 +1,10 @@
 #include <Arduino.h>
 /*
-this sketch is a simple example of the build-in watchdog timer. after 5 resets the esp32 will reboot after the 3 seconds.
-inspired by: https://iotassistant.io/esp32/enable-hardware-watchdog-timer-esp32-arduino-ide/
+Description:  This is a simple example for the built-in watchdog.
+Github:       https://github.com/0N3IR0S/esp32Watchdog
 
-creator:  Benjamin Buerge
-Date:     12.10.2020
+Author:   Benjamin Buerge
+Created:  13.10.2020
 */
 
 // LIBRARIES
